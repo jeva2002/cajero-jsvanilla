@@ -46,3 +46,9 @@ export const determineDenomination = (_value) => {
     throw "Inserte una denominación válida";
   }
 };
+
+export const validateAdd = (_amount, _denomination) => {
+  if(_denomination > _amount){
+    throw "No es posible depositar una cantidad menor al valor de una denominación";
+  }
+}
