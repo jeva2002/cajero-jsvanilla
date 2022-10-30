@@ -5,8 +5,8 @@ import {
   validateAmount,
 } from '../common/validations.js';
 
-const deliverByDenomination = (_amount) => {
-  let denomination = determineDenominationClient(_amount);
+const deliverByDenomination = (_amount, _totalBox) => {
+  let denomination = determineDenominationClient(_amount, _totalBox);
   let counter = 0;
   while (_amount >= denomination._value && denomination._amount > 0) {
     denomination.reduceAmount();
@@ -21,10 +21,10 @@ const deliverByDenomination = (_amount) => {
   };
 };
 
-const deliverMoney = (_amount) => {
+const deliverMoney = (_amount, _totalBox) => {
   const transaction = [];
   while (_amount >= 5000) {
-    let transactionByDenomination = deliverByDenomination(_amount);
+    let transactionByDenomination = deliverByDenomination(_amount, _totalBox);
     _amount -= transactionByDenomination.total;
     transaction.push([
       transactionByDenomination.denomination,
@@ -38,5 +38,5 @@ export const clientProcess = () => {
   const totalBox = getTotalAmount();
   let amount = parseInt(prompt('Ingrese la cantidad que desea retirar'));
   amount = validateTotal(validateAmount(amount), totalBox);
-  return deliverMoney(amount);
+  return deliverMoney(amount, totalBox);
 };

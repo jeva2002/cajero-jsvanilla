@@ -52,7 +52,7 @@ const determineDenomination = (_value) => {
   }
 };
 
-const determineDenominationClient = (_value) => {
+const determineDenominationClient = (_value, _totalBox) => {
   if (_value >= 100000 && cienCOP._amount > 0) {
     return cienCOP;
   } else if (_value >= 50000 && cincuentaCOP._amount > 0) {
@@ -64,6 +64,9 @@ const determineDenominationClient = (_value) => {
   } else if (_value >= 5000 && cincoCOP._amount > 0) {
     return cincoCOP;
   } else {
+    if(_totalBox > _value){
+      throw 'El cajero no cuenta con las denominaciones necesarias para la transacción';
+    }
     throw 'Inserte una denominación válida';
   }
 };
