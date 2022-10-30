@@ -6,14 +6,14 @@ import {
   cincoCOP,
 } from '../data/COP.js';
 
-export const invalidAmount = (_amount) => {
+const invalidAmount = (_amount) => {
   if (_amount < 5000) {
     throw 'El cajero no admite cifras menores a 5000';
   }
   return _amount;
 };
 
-export const validateTotal = (_amount, _totalBox) => {
+const validateTotal = (_amount, _totalBox) => {
   if (_amount > _totalBox) {
     _amount = _totalBox;
   }
@@ -21,7 +21,7 @@ export const validateTotal = (_amount, _totalBox) => {
   return _amount;
 };
 
-export const round = (_amount) => {
+const round = (_amount) => {
   if (_amount % 1000 !== 0) {
     console.log(`El cajero no recibe cifras menores a 5000`);
     if (_amount % 10000 <= 4999 && _amount % 10000 > 0) {
@@ -36,7 +36,7 @@ export const round = (_amount) => {
   return _amount;
 };
 
-export const determineDenomination = (_value) => {
+const determineDenomination = (_value) => {
   if (_value >= 100000) {
     return cienCOP;
   } else if (_value >= 50000) {
@@ -52,7 +52,23 @@ export const determineDenomination = (_value) => {
   }
 };
 
-export const validateAdd = (_amount, _denomination) => {
+const determineDenominationClient = (_value) => {
+  if (_value >= 100000 && cienCOP._amount > 0) {
+    return cienCOP;
+  } else if (_value >= 50000 && cincuentaCOP._amount > 0) {
+    return cincuentaCOP;
+  } else if (_value >= 20000 && veinteCOP._amount > 0) {
+    return veinteCOP;
+  } else if (_value >= 10000 && diezCOP._amount > 0) {
+    return diezCOP;
+  } else if (_value >= 5000 && cincoCOP._amount > 0) {
+    return cincoCOP;
+  } else {
+    throw 'Inserte una denominación válida';
+  }
+};
+
+const validateAdd = (_amount, _denomination) => {
   if (_denomination > _amount) {
     throw 'No es posible depositar una cantidad menor al valor de una denominación';
   }
@@ -61,21 +77,31 @@ export const validateAdd = (_amount, _denomination) => {
   }
 };
 
-export const isNumber = (_amount) => {
+const isNumber = (_amount) => {
   if (isNaN(_amount)) {
     throw 'Sólo se admiten números';
   }
 };
 
-export const withoutFunds = (_totalBox) => {
+const withoutFunds = (_totalBox) => {
   if(_totalBox < 5000){
     throw 'El cajero está en mantenimiento, vuelva pronto';
   }
 }
 
-export const validateAmount = (_amount) => {
+const validateAmount = (_amount) => {
   isNumber(_amount);
   invalidAmount(_amount);
   _amount = round(_amount);
   return _amount;
+}
+
+export {
+  validateTotal,
+  determineDenomination,
+  determineDenominationClient,
+  validateAdd,
+  withoutFunds,
+  validateAmount,
+  isNumber
 }

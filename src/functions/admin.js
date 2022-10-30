@@ -8,9 +8,9 @@ import {
 
 const addByDenomination = () => {
   let denomination = prompt('Ingrese el valor de la denominación');
+  denomination = determineDenomination(denomination);
   let amount = parseInt(prompt('¿Cuánto dinero desea cargar?'));
   amount = validateAmount(amount);
-  denomination = determineDenomination(denomination);
   validateAdd(amount, denomination._value);
   amount = amount / denomination._value;
   while (amount > 0) {

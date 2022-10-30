@@ -1,14 +1,12 @@
 import { getTotalAmount } from './info.js';
 import {
-  determineDenomination,
-  invalidAmount,
-  round,
   validateTotal,
-  isNumber,
+  determineDenominationClient,
+  validateAmount,
 } from '../common/validations.js';
 
 const deliverByDenomination = (_amount) => {
-  let denomination = determineDenomination(_amount);
+  let denomination = determineDenominationClient(_amount);
   let counter = 0;
   while (_amount >= denomination._value && denomination._amount > 0) {
     denomination.reduceAmount();
@@ -39,8 +37,6 @@ const deliverMoney = (_amount) => {
 export const clientProcess = () => {
   const totalBox = getTotalAmount();
   let amount = parseInt(prompt('Ingrese la cantidad que desea retirar'));
-  isNumber(amount);
-  invalidAmount(amount);
-  amount = validateTotal(round(amount), totalBox);
+  amount = validateTotal(validateAmount(amount), totalBox);
   return deliverMoney(amount);
 };

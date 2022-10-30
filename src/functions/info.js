@@ -21,7 +21,7 @@ const getTotalByDenomination = () => {
   return totalByDenomination;
 };
 
-export const getTotalAmount = () => {
+const getTotalAmount = () => {
   const totalByDenomination = getTotalByDenomination();
   let totalAmount = 0;
   for (let i = 0; i < totalByDenomination.length; i++) {
@@ -30,7 +30,7 @@ export const getTotalAmount = () => {
   return totalAmount;
 };
 
-export const getInfoAdmin = () => {
+const getInfoAdmin = () => {
   console.log('Cantidad por denominación:');
   console.table(getAmountByDenomination());
   console.log('Total por denominación');
@@ -38,8 +38,14 @@ export const getInfoAdmin = () => {
   console.log(`El monto total es ${getTotalAmount()}`);
 };
 
-export const getInfoClient = (_delivered) => {
+const getInfoClient = (_delivered) => {
   console.log('Se entregan');
   console.table(_delivered);
   console.log(`El dinero restante en el cajero es ${getTotalAmount()}`);
 };
+
+export {
+  getTotalAmount,
+  getInfoAdmin,
+  getInfoClient
+}
