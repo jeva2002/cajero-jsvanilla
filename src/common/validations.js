@@ -59,7 +59,7 @@ export const validateAdd = (_amount, _denomination) => {
 };
 
 export const isNumber = (_amount) => {
-  if (isNaN) {
+  if (isNaN(_amount)) {
     throw 'Sólo se admiten números';
   }
 };
