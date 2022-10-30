@@ -1,6 +1,10 @@
 export class Money {
   constructor(_id, _value, _amount) {
-    (this._id = _id), (this._value = _value), (this._amount = _amount);
+    (this._id = _id), (this._value = _value), (this._amount = 0);
+  }
+
+  setAmount(_amount) {
+    this._amount = _amount;
   }
 
   addAmount() {

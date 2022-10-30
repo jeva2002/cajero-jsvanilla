@@ -1,29 +1,35 @@
 import { getInfoAdmin } from './info.js';
 import {
-  invalidAmount,
-  round,
   determineDenomination,
   validateAdd,
   isNumber,
+  validateAmount
 } from '../common/validations.js';
 
-const addByDenomination = (_amount) => {
+const addByDenomination = () => {
   let denomination = prompt('Ingrese el valor de la denominación');
+  let amount = parseInt(prompt('¿Cuánto dinero desea cargar?'));
+  amount = validateAmount(amount);
   denomination = determineDenomination(denomination);
-  validateAdd(_amount, denomination._value);
-  let amount = _amount / denomination._value;
+  validateAdd(amount, denomination._value);
+  amount = amount / denomination._value;
   while (amount > 0) {
     denomination.addAmount();
     amount--;
   }
-  return denomination._amount;
 };
 
+const addMoney = () => {
+  let denominations = parseInt(prompt("¿Cuántas denominaciones desea cargar?"));
+  isNumber(denominations);
+  while(denominations > 0){
+    addByDenomination();
+    denominations--;
+  }
+}
+
+
 export const adminProcess = () => {
-  let amount = parseInt(prompt('¿Cuánto dinero desea cargar?'));
-  isNumber(amount);
-  invalidAmount(amount);
-  amount = round(amount);
-  addByDenomination(amount);
+  addMoney();
   getInfoAdmin();
 };
