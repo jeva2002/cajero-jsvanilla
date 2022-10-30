@@ -1,6 +1,11 @@
-import { getInfoAdmin } from "./info.js";
-import { invalidAmount, round, determineDenomination, validateAdd } from "../common/validations.js";
-
+import { getInfoAdmin } from './info.js';
+import {
+  invalidAmount,
+  round,
+  determineDenomination,
+  validateAdd,
+  isNumber,
+} from '../common/validations.js';
 
 const addByDenomination = (_amount) => {
   let denomination = prompt('Ingrese el valor de la denominación');
@@ -15,10 +20,10 @@ const addByDenomination = (_amount) => {
 };
 
 export const adminProcess = () => {
-  let amount = parseInt(prompt('¿Cuánto dinero desea cargar?')); 
+  let amount = parseInt(prompt('¿Cuánto dinero desea cargar?'));
+  isNumber(amount);
   invalidAmount(amount);
   amount = round(amount);
   addByDenomination(amount);
   getInfoAdmin();
-}
-
+};

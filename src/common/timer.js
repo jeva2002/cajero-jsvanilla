@@ -3,4 +3,4 @@ export const timer = (_time) => {
   setTimeout(() => {
     window.location.reload();
   }, _time);
-}
+};

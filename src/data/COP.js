@@ -1,4 +1,4 @@
-import { Money } from "./Money.class.js";
+import { Money } from './Money.class.js';
 
 export const cincoCOP = new Money('cinco mil', 5000, 56);
 export const diezCOP = new Money('diez mil', 10000, 34);

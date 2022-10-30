@@ -1,5 +1,4 @@
-import { moneyList } from "../data/COP.js";
-
+import { moneyList } from '../data/COP.js';
 
 const getAmountByDenomination = () => {
   const amountByDenomination = [];
@@ -32,15 +31,15 @@ export const getTotalAmount = () => {
 };
 
 export const getInfoAdmin = () => {
-  console.log("Cantidad por denominación:");
+  console.log('Cantidad por denominación:');
   console.table(getAmountByDenomination());
-  console.log("Total por denominación");
+  console.log('Total por denominación');
   console.table(getTotalByDenomination());
-  console.log(`El monto total es ${getTotalAmount()}`)
-}
+  console.log(`El monto total es ${getTotalAmount()}`);
+};
 
 export const getInfoClient = (_delivered) => {
-  console.log("Se entregan");
+  console.log('Se entregan');
   console.table(_delivered);
   console.log(`El dinero restante en el cajero es ${getTotalAmount()}`);
-}
+};
