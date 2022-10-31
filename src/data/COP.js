@@ -6,4 +6,4 @@ export const veinteCOP = new Money('veinte mil', 20000);
 export const cincuentaCOP = new Money('cincuenta mil', 50000);
 export const cienCOP = new Money('cien mil', 100000);
 
-export const moneyList = [cincoCOP, diezCOP, veinteCOP, cincuentaCOP, cienCOP];
+export const moneyList = [ cincoCOP, diezCOP, veinteCOP, cincuentaCOP, cienCOP ];

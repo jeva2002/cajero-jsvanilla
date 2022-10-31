@@ -3,7 +3,8 @@ import {
   determineDenomination,
   validateAdd,
   isNumber,
-  validateAmount
+  validateAmount,
+  validateAmountDenominations
 } from '../common/validations.js';
 
 const addByDenomination = () => {
@@ -22,6 +23,7 @@ const addByDenomination = () => {
 const addMoney = () => {
   let denominations = parseInt(prompt("¿Cuántas denominaciones desea cargar?"));
   isNumber(denominations);
+  validateAmountDenominations(denominations);
   while(denominations > 0){
     addByDenomination();
     denominations--;

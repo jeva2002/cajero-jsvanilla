@@ -1,20 +1,20 @@
 export const usersList = [
   {
     userName: 'Josefina',
-    id: 1001523689,
+    id: 1234,
     password: 1234,
     userType: 'administrador',
   },
   {
     userName: 'Juanito',
-    id: 1000321879,
-    password: 4321,
+    id: 1111,
+    password: 1111,
     userType: 'cliente',
   },
   {
     userName: 'Ramón Valdivia',
-    id: 700532125,
-    password: 5214,
+    id: 2222,
+    password: 2222,
     userType: 'cliente',
   },
 ];

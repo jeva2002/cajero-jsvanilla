@@ -1,5 +1,5 @@
 export class Money {
-  constructor(_id, _value, _amount) {
+  constructor(_id, _value) {
     (this._id = _id), (this._value = _value), (this._amount = 0);
   }
 

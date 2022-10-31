@@ -1,7 +1,6 @@
 import { verifyUserType } from './src/functions/atm.js';
 import { auth } from './src/functions/auth.js';
 
-
 export const process = () => {
   const userAuth = parseInt(prompt('Ingrese su documento de identidad'));
   const passwordAuth = parseInt(prompt('Ingrese su contraseña'));
@@ -9,7 +8,7 @@ export const process = () => {
 }
 
 export const timer = (_time) => {
-  console.log(`En ${_time / 1000} segundos se reiniciará la pantalla`);
+  console.log(`En ${_time / 1000} segundos se reiniciará la consola`);
   setTimeout(() => {
     console.clear();
     process();
@@ -26,4 +25,3 @@ try{
 } catch(error){
   console.log(error)
 }
-
